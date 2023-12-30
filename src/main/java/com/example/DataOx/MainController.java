@@ -24,7 +24,6 @@ public class MainController {
     public String getHomePage(){
         return "home";
     }
-    
 
     @PostMapping("/scrap")
     public String scrapJobs(Model model, @RequestParam String jobFunction) throws IOException {
