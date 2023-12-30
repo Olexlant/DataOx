@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse; /* Removes spacing between table cells */
+            width: 100%; /* Sets table width to fill the container */
+            margin-bottom: 20px; /* Adds some space below the table */
+        }
+
+        th, td {
+            padding: 10px; /* Adds padding around table cell content */
+            text-align: left; /* Aligns text to the left within cells */
+            border: 1px solid #ddd; /* Adds a light gray border around cells */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Sets a light gray background for headers */
+            font-weight: bold; /* Makes headers bold */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8f8f8; /* Alternates row colors for better readability */
+        }
+
+        a {
+            color: #007bff; /* Sets link color to blue */
+            text-decoration: none; /* Removes underline from links */
+        }
+
+        img {
+            width: 50px; /* Sets a default width for logos */
+            height: 50px; /* Sets a default height for logos */
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Position Name</th>
+        <th>Organization Title</th>
+        <th>Job Page URL</th>
+        <th>Address</th>
+        <th>Description</th>
+        <th>Labor Function</th>
+        <th>Tags</th>
+        <th>Posted Date</th>
+        <th>Logo</th>
+        <th>URL to Organization</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="job : ${jobs}">
+        <td th:text="${job.getId()}"></td>
+        <td th:text="${job.getPositionName()}"></td>
+        <td th:text="${job.getOrganizationTitle()}"></td>
+        <td><a th:href="${job.getJobPageUrl()}">Job page URL</a></td>
+        <td th:text="${job.getAddress()}"></td>
+        <td th:text="${job.getDescription()}"></td>
+        <td th:text="${job.getLaborFunction()}"></td>
+        <td th:text="${job.getTagsNames()}"></td>
+        <td th:text="${job.getPostedDate()}"></td>
+        <td><img th:src="${job.getLogo()}" th:alt="${job.getOrganizationTitle() + ' Logo'}" ></td>
+        <td><a th:href="${job.getUrlToOrganization()}">URL to Organization</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
